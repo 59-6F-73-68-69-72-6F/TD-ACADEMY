@@ -26,7 +26,6 @@ def set_color(ctrlList:list=None, color:int=None):
         except:
             pass
         
-        
-            
+           
 # EXAMPLE
 # set_color(['circle','circle1'], 8)

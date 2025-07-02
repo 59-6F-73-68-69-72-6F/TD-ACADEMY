@@ -110,3 +110,4 @@ class ArLoad(ArUtil):
 def execute_the_class_ar_load():
     global main_widget
     main_widget = ArLoad()
+
