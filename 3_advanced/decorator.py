@@ -1,7 +1,7 @@
 # ADVANCED ***************************************************************************
 # content = assignment
 #
-# date    = 2022-08-07
+# date    = 2025-07-02
 # email   = contact@alexanderrichtertd.com
 #************************************************************************************
 
@@ -26,29 +26,49 @@ START - long_sleeping
 
 """
 
-
 import time
+import yaml
+
 
 
 #*********************************************************************
 # DECORATOR
 def print_process(func):
     def wrapper(*args, **kwargs):
-        func(arg)                  # main_function
+        time_end = time.time()
+        start_time = time.time()
+        print(f" {func.__name__} START - {time.strftime('%H:%M:%S')}")
+        func(*args, **kwargs)    
+        time_end = time.time()
+        time_process = time_end - start_time
+        print(f"{func.__name__} END - {time.strftime('%H:%M:%S')}")
+        print(f"time_process - {time_process:.2f} seconds")
     return wrapper
 
 
 #*********************************************************************
 # FUNC
+path= r"TD-ACADEMY\3_advanced\conf.yaml"
+with open(path, 'r') as file:
+    sleep_time = yaml.safe_load(file)
+    
+
 @print_process
 def short_sleeping(name):
-    time.sleep(.1)
+    time.sleep(sleep_time['short'])
+    # print(name)
+
+@print_process
+def mid_sleeping(name):
+    time.sleep(sleep_time['mid'])
+    # print(name)
+
+@print_process
+def long_sleeping(name):
+    time.sleep(sleep_time['long'])
     print(name)
 
-def mid_sleeping():
-    time.sleep(2)
-
-def long_sleeping():
-    time.sleep(4)
-
 short_sleeping("so sleepy")
+# mid_sleeping("so sleepy")
+# long_sleeping("so sleepy")
+
