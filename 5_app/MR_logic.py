@@ -1,4 +1,4 @@
-from PySide2.QtCore import QObject,Signal
+from Qt.QtCore import QObject
 from maya import cmds as m
 
 
@@ -7,7 +7,7 @@ class RenamerLogic(QObject):
     def __init__(self):
         super().__init__()
     
-    def rename(self, new_name):
+    def rename(self, new_name: str):
         if m.ls(selection=True, type='dagNode'):
             selection = m.ls(selection=True)
             try:
@@ -16,7 +16,7 @@ class RenamerLogic(QObject):
             except RuntimeError as e:
                 pass
                 
-    def prefix(self, prefix_name):
+    def prefix(self, prefix_name: str):
         if m.ls(selection=True, type='dagNode'):
             selection = m.ls(selection=True)
             try:
@@ -25,7 +25,7 @@ class RenamerLogic(QObject):
             except RuntimeError as e:
                 pass
 
-    def suffix(self, suffix_name):
+    def suffix(self, suffix_name: str):
         if m.ls(selection=True, type='dagNode'):
             selection = m.ls(selection=True)
             try:
@@ -34,7 +34,7 @@ class RenamerLogic(QObject):
             except RuntimeError as e:
                 pass
             
-    def replace(self, search_text, replace_text):
+    def replace(self, search_text: str, replace_text: str):
         all_nodes = m.ls(type='dagNode')
         selection = m.ls(selection=True, type='dagNode')
         # --- ALL NODES ---

@@ -1,6 +1,6 @@
-from PySide2.QtWidgets import QWidget,QLabel,QLineEdit,QPushButton,QVBoxLayout,QHBoxLayout,QFrame
-from PySide2.QtGui import QFont
-from PySide2.QtCore import Qt, Signal
+from Qt.QtWidgets import QWidget,QLabel,QLineEdit,QPushButton,QVBoxLayout,QHBoxLayout,QFrame
+from Qt.QtGui import QFont
+from Qt.QtCore import Qt, Signal
 
 FONT = "Nimbus Sans, Bold"
 COLOR_TITLE = "#c0c0c0"
@@ -19,7 +19,6 @@ class MagicRenamer(QWidget):
         super().__init__()
         self.buildUI()
         self.connect_signals()
-
 
     # SET WINDOW --------------------------------------------
     def buildUI(self):
@@ -53,7 +52,6 @@ class MagicRenamer(QWidget):
         self.logo = QLabel()
         self.logo.setAlignment(Qt.AlignCenter)
 
-        
         # ROW 1 ---
         row1_layout = QHBoxLayout()
         NameInsert = self.label_text("Name:")
@@ -137,19 +135,19 @@ class MagicRenamer(QWidget):
         self.setLayout(main_layout)
 
     # GENERIC WIDGETS --------------------------------------------
-    def label_text(self,text):
+    def label_text(self,text: str):
         label = QLabel(text=text)
         label.setFont(QFont(FONT,FONT_SIZE))
         label.setStyleSheet(f"color:{COLOR_TITLE}")
         return label
 
-    def bar_text(self,text=None):
+    def bar_text(self,text:str=None):
         line_edit = QLineEdit(placeholderText=text)
         line_edit.setFont(QFont(FONT,FONT_SIZE))
         line_edit.setStyleSheet(f" background-color: {COLOR_ENTRY} ; color: {TEXT_COLOR};")
         return line_edit
 
-    def push_button(self,text):
+    def push_button(self,text:str):
         button = QPushButton(text)
         button.setFont(QFont(FONT,FONT_SIZE))
         button.setFixedSize(80,23)

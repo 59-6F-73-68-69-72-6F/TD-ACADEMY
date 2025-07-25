@@ -1,13 +1,12 @@
 ######################################################
 # - MAGIC MANAGER -
 # AUTHOR : RUDY LETI
-# DATE : 2025/07/18
+# DATE : 2025/07/25
 # MAGIC RENAMER UI
 ######################################################
 
 
-from PySide2.QtGui import QPixmap
-from functools import partial
+from Qt.QtGui import QPixmap
 import MR_logic
 import MR_UI
 import os
@@ -32,7 +31,6 @@ def getMayaMainWindow():
     ui.suffix_signal_request.connect(logic.suffix)
     ui.replace_signal_request.connect(logic.replace)
     
-
     ui.show()
     return ui
 getMayaMainWindow()
