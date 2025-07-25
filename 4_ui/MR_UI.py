@@ -1,5 +1,5 @@
 ######################################################
-# - MAGIC MANAGER -
+# - MAGIC RENAMER -
 # AUTHOR : RUDY LETI
 # DATE : 2025/07/25
 # MAGIC RENAMER UI
