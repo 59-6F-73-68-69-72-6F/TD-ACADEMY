@@ -1,14 +1,14 @@
 ######################################################
 # - MAGIC MANAGER -
 # AUTHOR : RUDY LETI
-# DATE : 2025/07/18
-# RENAMER UI
+# DATE : 2025/07/25
+# MAGIC RENAMER UI
 ######################################################
 
 
-from PySide2.QtWidgets import QWidget,QLabel,QLineEdit,QPushButton,QVBoxLayout,QHBoxLayout,QFrame
-from PySide2.QtGui import QFont,QPixmap
-from PySide2.QtCore import Qt
+from Qt.QtWidgets import QWidget,QLabel,QLineEdit,QPushButton,QVBoxLayout,QHBoxLayout,QFrame
+from Qt.QtGui import QFont,QPixmap
+from Qt.QtCore import Qt
 from maya import cmds as m
 
 FONT = "Nimbus Sans, Bold"
@@ -75,14 +75,14 @@ class MagicRenamer(QWidget):
         # ROW 4 ---
         row4_layout = QHBoxLayout()
         self.EntryPrefix = self.bar_text("Prefix")
-        self.EntryPrefix.returnPressed.connect(self.prefix) # press Enter to prefix
+        self.EntryPrefix.returnPressed.connect(self.prefix)
         ButtonPrefix = self.push_button("P")
         ButtonPrefix.clicked.connect(self.prefix)
         
         # ROW 5 ---
         row5_layout = QHBoxLayout()
         self.EntrySuffix = self.bar_text("Suffix")
-        self.EntrySuffix.returnPressed.connect(self.suffix) # press Enter to suffix
+        self.EntrySuffix.returnPressed.connect(self.suffix)
         ButtonSuffix = self.push_button("S")
         ButtonSuffix.clicked.connect(self.suffix)
         
