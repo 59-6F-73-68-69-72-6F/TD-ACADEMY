@@ -1,5 +1,5 @@
 ######################################################
-# - MAGIC MANAGER -
+# - MAGIC RENAMER -
 # AUTHOR : RUDY LETI
 # DATE : 2025/07/25
 # MAGIC RENAMER UI
@@ -21,10 +21,10 @@ FONT_SIZE = 12
 class MagicRenamer(QWidget):
     def __init__(self):
         super().__init__()
-        self.buildUI()
+        self.build_ui()
 
     # SET WINDOW --------------------------------------------
-    def buildUI(self):
+    def build_ui(self):
         # WINDOW ---
         self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)  # KEEP WINDOW ON TOP
         self.setFixedSize(310,460)
@@ -111,7 +111,7 @@ class MagicRenamer(QWidget):
         self.sep6_layout.addWidget(separator_6)
         
         # HORIZONTAL LAYOUTS ---
-        row0_layout.addWidget(self.Qlabel)
+        row0_layout.addWidget(self.logo)
         row1_layout.addWidget(NameInsert)
         row2_layout.addWidget(self.EntryNameInsert)
         row2_layout.addWidget(ButtonName)
