@@ -6,7 +6,6 @@
 ######################################################
 
 
-
 from Qt.QtGui import QPixmap
 import MR_logic
 import MR_UI
