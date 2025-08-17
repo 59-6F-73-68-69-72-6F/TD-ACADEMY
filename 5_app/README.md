@@ -1,4 +1,7 @@
-# Magic Renamer
+# Magic Renamer ✏️
+
+
+
 
 The **Magic Renamer** is a compact and convenient tool designed to run within Autodesk Maya. It helps you efficiently manage and rename objects in your scene with a simple, user-friendly interface. The window is designed to stay on top of your Maya session, allowing for quick access without interrupting your workflow.
 
@@ -12,3 +15,5 @@ The **Magic Renamer** is a compact and convenient tool designed to run within Au
     *   **Scene-Wide:** If you have *nothing* selected, it will search and replace text in the names of all objects throughout your entire scene.
 
 This tool is perfect for cleaning up your scene hierarchy, enforcing naming conventions, and performing bulk renaming tasks quickly and easily.
+
+<img width="325" height="497" alt="image" src="https://github.com/user-attachments/assets/80fadd0e-e28f-4beb-bd66-3f2393361979" />
