@@ -10,18 +10,25 @@ FONT_SIZE = 12
 
 
 class MagicRenamer(QWidget):
+    """
+    Widget that provides a user interface for renaming, adding prefixes/suffixes,
+    and replacing text in object names.
+    It emits signals when actions are performed, allowing other components to respond accordingly.
+    """
     rename_signal_request = Signal(str)
     prefix_signal_request = Signal(str)
     suffix_signal_request = Signal(str)
     replace_signal_request = Signal(str, str)
     
     def __init__(self):
+        """ Initializes the MagicRenamer widget, builds the UI, and connects signals. """
         super().__init__()
         self.buildUI()
         self.connect_signals()
 
     # SET WINDOW --------------------------------------------
     def buildUI(self):
+        """ Constructs and arranges all the UI elements for the UI widget. """
         # WINDOW ---
         self.setWindowFlags(self.windowFlags() | Qt.WindowStaysOnTopHint)  # KEEP WINDOW ON TOP
         self.setFixedSize(310,460)
@@ -135,26 +142,42 @@ class MagicRenamer(QWidget):
         self.setLayout(main_layout)
 
     # GENERIC WIDGETS --------------------------------------------
-    def label_text(self,text: str):
+    def label_text(self,text: str) -> QLabel:
+        """
+        Creates a QLabel with predefined styling.
+        Args:
+            text (str): The text to display on the label.
+        """
         label = QLabel(text=text)
         label.setFont(QFont(FONT,FONT_SIZE))
         label.setStyleSheet(f"color:{COLOR_TITLE}")
         return label
 
-    def bar_text(self,text:str=None):
+    def bar_text(self,text:str=None) -> QLineEdit:
+        """
+        Creates a QLineEdit with predefined styling.
+        Args:
+            text (str, optional): The placeholder text for the line edit. Defaults to None.
+        """
         line_edit = QLineEdit(placeholderText=text)
         line_edit.setFont(QFont(FONT,FONT_SIZE))
         line_edit.setStyleSheet(f" background-color: {COLOR_ENTRY} ; color: {TEXT_COLOR};")
         return line_edit
 
-    def push_button(self,text:str):
+    def push_button(self,text:str) -> QPushButton:
+        """
+        Creates a QPushButton with predefined styling.
+        Args:
+            text (str): The text to display on the button.
+        """
         button = QPushButton(text)
         button.setFont(QFont(FONT,FONT_SIZE))
         button.setFixedSize(80,23)
         button.setStyleSheet(f" background-color: #2a9d8f ; color:#222831;")
         return button
     
-    def splitter(self):
+    def splitter(self) -> QFrame:
+        """ Creates a QFrame to be used as a horizontal separator with predefined styling. """
         separator = QFrame()
         separator.setFrameShape(QFrame.HLine)
         separator.setFrameShadow(QFrame.Sunken)
@@ -164,6 +187,7 @@ class MagicRenamer(QWidget):
 
     # SIGNALS --------------------------------------------
     def connect_signals(self):
+        """ Connects UI element signals (e.g., button clicks) to their corresponding slots. """
         self.EntryNameInsert.returnPressed.connect(self.on_name)
         self.ButtonName.clicked.connect(self.on_name)
         
@@ -177,25 +201,27 @@ class MagicRenamer(QWidget):
 
     # EMITTERS --------------------------------------
     def on_name(self):
+        """ Slot for the rename action. Emits the rename_signal_request with the new name. """
         new_name = self.EntryNameInsert.text()
         self.rename_signal_request.emit(new_name)
         self.EntryNameInsert.clear()
         
     def on_prefix(self):
+        """ Slot for the add prefix action. Emits the prefix_signal_request with the new prefix. """
         new_prefix = self.EntryPrefix.text()
         self.prefix_signal_request.emit(new_prefix)
         self.EntryPrefix.clear()
         
     def on_suffix(self):
+        """ Slot for the add suffix action. Emits the suffix_signal_request with the new suffix. """
         new_suffix = self.EntrySuffix.text()
         self.suffix_signal_request.emit(new_suffix)
         self.EntrySuffix.clear()
     
     def on_replace(self):
+        """ Slot for the search and replace action. Emits the replace_signal_request with the search and replace text. """
         search_text = self.EntrySearch.text()
         replace_text = self.EntryReplace.text()
         self.replace_signal_request.emit(search_text, replace_text)
         self.EntrySearch.clear()
         self.EntryReplace.clear()
-
-
